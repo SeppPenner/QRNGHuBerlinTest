@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace QRNG
+namespace QaRaNuGe
 {
     // ReSharper disable once UnusedMember.Global
     public static class Program

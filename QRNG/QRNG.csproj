@@ -8,7 +8,7 @@
     <ProjectGuid>{69123445-19C5-4B42-A5B0-BB456CDD27F0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QRNG</RootNamespace>
+    <RootNamespace>QaRaNuGe</RootNamespace>
     <AssemblyName>QRNG</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <TargetFrameworkProfile>
@@ -37,7 +37,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>QRNG.Program</StartupObject>
+    <StartupObject>QaRaNuGe.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Atom.ico</ApplicationIcon>

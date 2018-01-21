@@ -1,13 +1,17 @@
 ﻿// import external dll functions
 
-using System.Runtime.InteropServices;
+using System;
 using System.Text;
+using System.Runtime.InteropServices;
 
-namespace QRNG
+namespace QaRaNuGe
 {
-    public partial class Qrng
+    // ReSharper disable once InconsistentNaming
+    public class QRNG
     {
-        public static readonly string[] QrngErrorStrings = {
+        // ReSharper disable once InconsistentNaming
+        public static readonly string[] qrng_error_strings =
+        {
             "QRNG_SUCCESS",
             "QRNG_ERR_FAILED_TO_BASE_INIT",
             "QRNG_ERR_FAILED_TO_INIT_SOCK",
@@ -32,10 +36,11 @@ namespace QRNG
             "QRNG_ERR_FAILED_TO_SEND_COMMAND"
         };
 
-        public bool CheckDll()
+        // ReSharper disable once InconsistentNaming
+        public bool CheckDLL()
         {
-            _qrngdllLoaded = true;
-            return _qrngdllLoaded;
+            QRNGDLLLoaded = true;
+            return QRNGDLLLoaded;
         }
 
         //{+// All library functions (except disconnect()) return 0 (= QRNG_SUCCESS) if }
@@ -43,134 +48,158 @@ namespace QRNG
         //{=Use the qrng_error_strings array to output the error code as a string. }
 
         //{+// connect to QRNG service first, by default no ssl will be used*/ }
-        [DllImport("libQRNG.dll")]
-        public static extern int Qrng_connect(StringBuilder username,
+        [DllImport("libqrng.dll")]
+        // ReSharper disable once UnusedMember.Global
+        // ReSharper disable once BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect(StringBuilder username,
             StringBuilder password);
 
-        [DllImport("libQRNG.dll")]
-        public static extern int Qrng_connect_SSL(StringBuilder username,
+        [DllImport("libqrng.dll")]
+        // ReSharper disable once UnusedMember.Global
+        // ReSharper disable once BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_SSL(StringBuilder username,
             StringBuilder password);
 
         //{+// read bytes / double(s) / int(s) (requires an established connection) }
         //{-make sure your program allocated the value / array beforehand }
         //{=if connected via SSL, the data will be also encrypted }
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_get_byte_array(ref byte byteArray,
-            int byteArraySize,
-            ref int actualBytesRcvd);
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_get_byte_array(ref Byte byte_array,
+            Int32 byte_array_size,
+            ref Int32 actual_bytes_rcvd);
 
         //{+// returns double value(s) within range [0, 1)*/ }
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_get_double(double value);
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_get_double(Double value);
 
-        [DllImport("libQRNG.dll")]
-        public static extern int Qrng_get_double_array(ref double doubleArray,
-            int doubleArraySize,
-            ref int actualDoublesRcvd);
+        [DllImport("libqrng.dll")]
+        // ReSharper disable once UnusedMember.Global
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_get_double_array(ref Double double_array,
+            Int32 double_array_size,
+            ref Int32 actual_doubles_rcvd);
 
         //{+// returns integer value(s)*/ }
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_get_int(ref int value);
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_get_int(ref Int32 value);
 
-        [DllImport("libQRNG.dll")]
-        public static extern int Qrng_get_int_array(ref int intArray,
-            int intArraySize,
-            ref int actualIntsRcvd);
+        [DllImport("libqrng.dll")]
+        // ReSharper disable once UnusedMember.Global
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_get_int_array(ref Int32 int_array,
+            Int32 int_array_size,
+            ref Int32 actual_ints_rcvd);
 
         //{+// this function will return a random string containing the characters a-zA-Z0-9 }
         //{=of length password_length terminated by a null character }
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_generate_password(StringBuilder tobeusedPasswordChars,
-            StringBuilder generatedPassword,
-            int passwordLength);
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_generate_password(StringBuilder tobeused_password_chars,
+            StringBuilder generated_password,
+            Int32 password_length);
 
         //{+// here are some handy one-liner functions which automatically a) connect to the QRNG service, }
         //{-b) retrieve the requested data and c) disconnect again. }
         //{-You can use them, if you retrieve data only once in a while. }
         //{=(By default no SSL will be used.) }
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_connect_and_get_byte_array(StringBuilder username,
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_and_get_byte_array(StringBuilder username,
             StringBuilder password,
-            ref byte byteArray,
-            int byteArraySize,
-            ref int actualBytesRcvd);
+            ref Byte byte_array,
+            Int32 byte_array_size,
+            ref Int32 actual_bytes_rcvd);
 
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_connect_and_get_byte_array_SSL(StringBuilder username,
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_and_get_byte_array_SSL(StringBuilder username,
             StringBuilder password,
-            ref byte byteArray,
-            int byteArraySize,
-            ref int actualBytesRcvd);
+            ref Byte byte_array,
+            Int32 byte_array_size,
+            ref Int32 actual_bytes_rcvd);
 
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_connect_and_get_double_array(StringBuilder username,
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_and_get_double_array(StringBuilder username,
             StringBuilder password,
-            ref double doubleArray,
-            int doubleArraySize,
-            ref int actualDoublesRcvd);
+            ref Double double_array,
+            Int32 double_array_size,
+            ref Int32 actual_doubles_rcvd);
 
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_connect_and_get_double_array_SSL(StringBuilder username,
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_and_get_double_array_SSL(StringBuilder username,
             StringBuilder password,
-            ref double doubleArray,
-            int doubleArraySize,
-            ref int actualDoublesRcvd);
+            ref Double double_array,
+            Int32 double_array_size,
+            ref Int32 actual_doubles_rcvd);
 
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_connect_and_get_int_array(StringBuilder username,
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_and_get_int_array(StringBuilder username,
             StringBuilder password,
-            ref int intArray,
-            int intArraySize,
-            ref int actualIntsRcvd);
+            ref Int32 int_array,
+            Int32 int_array_size,
+            ref Int32 actual_ints_rcvd);
 
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_connect_and_get_int_array_SSL(StringBuilder username,
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_and_get_int_array_SSL(StringBuilder username,
             StringBuilder password,
-            ref int intArray,
-            int intArraySize,
-            ref int actualIntsRcvd);
+            ref Int32 int_array,
+            Int32 int_array_size,
+            ref Int32 actual_ints_rcvd);
 
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_connect_and_get_double(StringBuilder username,
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_and_get_double(StringBuilder username,
             StringBuilder password,
-            double value);
+            Double value);
 
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_connect_and_get_double_SSL(StringBuilder username,
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_and_get_double_SSL(StringBuilder username,
             StringBuilder password,
-            double value);
+            Double value);
 
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_connect_and_get_int(StringBuilder username,
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_and_get_int(StringBuilder username,
             StringBuilder password,
-            int value);
+            Int32 value);
 
-        [DllImport("libQRNG.dll")]
+        [DllImport("libqrng.dll")]
         // ReSharper disable once UnusedMember.Global
-        public static extern int Qrng_connect_and_get_int_SSL(StringBuilder username,
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_connect_and_get_int_SSL(StringBuilder username,
             StringBuilder password,
-            int value);
+            Int32 value);
 
         //{+// disconnect*/ }
-        [DllImport("libQRNG.dll")]
-        public static extern int Qrng_disconnect();
+        [DllImport("libqrng.dll")]
+        // ReSharper disable once UnusedMember.Global
+        // ReSharper disable BuiltInTypeReferenceStyle
+        public static extern Int32 qrng_disconnect();
 
-        private bool _qrngdllLoaded;
+        // ReSharper disable once InconsistentNaming
+        private bool QRNGDLLLoaded;
     }
+
 }
-
-
 

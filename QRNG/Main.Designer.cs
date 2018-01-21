@@ -1,4 +1,4 @@
-﻿namespace QRNG
+﻿namespace QaRaNuGe
 {
     partial class Main
     {

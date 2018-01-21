@@ -4,11 +4,11 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
-namespace QRNG
+namespace QaRaNuGe
 {
     public partial class Main : Form
     {
-        private readonly Qrng _pqDll = new Qrng();
+        private readonly QRNG _pqDll = new QRNG();
         private bool _bConnected;
 
         public Main()
@@ -24,7 +24,7 @@ namespace QRNG
             {
                 try
                 {
-                    if (_pqDll.CheckDll() == false)
+                    if (_pqDll.CheckDLL() == false)
                     {
                         MessageBox.Show(@"loading library libQRNG.dll failed", @"Warning",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -38,13 +38,13 @@ namespace QRNG
                         strUser.Insert(0, edtUser.Text);
                         strPass.Insert(0, edtPass.Text);
                         var iRet = chkSSL.Checked == false
-                            ? Qrng.Qrng_connect(strUser, strPass)
-                            : Qrng.Qrng_connect_SSL(strUser, strPass);
+                            ? QRNG.qrng_connect(strUser, strPass)
+                            : QRNG.qrng_connect_SSL(strUser, strPass);
                         if (iRet != 0)
                         {
                             try
                             {
-                                MessageBox.Show(@"can't connect: " + Qrng.QrngErrorStrings[iRet], @"Warning",
+                                MessageBox.Show(@"can't connect: " + QRNG.qrng_error_strings[iRet], @"Warning",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                             catch
@@ -71,7 +71,7 @@ namespace QRNG
             }
             else
             {
-                Qrng.Qrng_disconnect();
+                QRNG.qrng_disconnect();
                 _bConnected = false;
                 btnConnect.Text = @"Connect";
                 grpRandom.Enabled = false;
@@ -90,13 +90,13 @@ namespace QRNG
             Memo.Items.Clear();
             Memo.Items.Add("get " + Convert.ToString(iNumberOfValues) + " random integer values.");
             sw.Start();
-            var iRet = Qrng.Qrng_get_int_array(ref iArray[0], iNumberOfValues, ref iCreatedNumbers);
+            var iRet = QRNG.qrng_get_int_array(ref iArray[0], iNumberOfValues, ref iCreatedNumbers);
             sw.Stop();
             if (iRet != 0)
             {
                 try
                 {
-                    Memo.Items.Add("can't get random numbers: " + Qrng.QrngErrorStrings[iRet]);
+                    Memo.Items.Add("can't get random numbers: " + QRNG.qrng_error_strings[iRet]);
                 }
                 catch
                 {
@@ -121,12 +121,12 @@ namespace QRNG
             Memo.Items.Clear();
             Memo.Items.Add("get " + Convert.ToString(iNumberOfValues) + " random float values.");
             sw.Start();
-            var iRet = Qrng.Qrng_get_double_array(ref fArray[0], iNumberOfValues, ref iCreatedNumbers);
+            var iRet = QRNG.qrng_get_double_array(ref fArray[0], iNumberOfValues, ref iCreatedNumbers);
             sw.Stop();
             if (iRet != 0)
                 try
                 {
-                    Memo.Items.Add("can't get random numbers: " + Qrng.QrngErrorStrings[iRet]);
+                    Memo.Items.Add("can't get random numbers: " + QRNG.qrng_error_strings[iRet]);
                 }
                 catch
                 {
@@ -160,12 +160,12 @@ namespace QRNG
                 var iCreatedNumbers = 0;
                 iNumberOfValues = iNumberOfValues * 10; // increase count by an order of magnitude
                 sw.Start();
-                var iRet = Qrng.Qrng_get_double_array(ref fArray[0], iNumberOfValues, ref iCreatedNumbers);
+                var iRet = QRNG.qrng_get_double_array(ref fArray[0], iNumberOfValues, ref iCreatedNumbers);
                 sw.Stop();
                 if (iRet != 0)
                     try
                     {
-                        Memo.Items.Add("can't get random numbers: " + Qrng.QrngErrorStrings[iRet]);
+                        Memo.Items.Add("can't get random numbers: " + QRNG.qrng_error_strings[iRet]);
                     }
                     catch
                     {
