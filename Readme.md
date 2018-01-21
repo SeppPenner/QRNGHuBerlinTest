@@ -16,8 +16,11 @@ The QRNG code is mainly taken from https://qrng.physik.hu-berlin.de/.
 
 ## Example login:
 Username: safasdfgwadgva3z5eh
+
 Email: safasdfgwadgva3z5eh@tempr.email
+
 Full Name: Hans Meier
+
 Password: TcQgUrBj1BeF
 
 Change history
