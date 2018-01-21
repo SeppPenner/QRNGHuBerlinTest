@@ -12,7 +12,7 @@ QRNGHuBerlinTest is a project written in C# 4.7. The software is used to connect
 ![Screenshot from the GUI](https://github.com/SeppPenner/QRNGHuBerlinTest/blob/master/Screenshot.PNG "Screenshot from the GUI")
 
 ## Special thanks
-The tic tac toe code is mainly taken from https://qrng.physik.hu-berlin.de/.
+The QRNG code is mainly taken from https://qrng.physik.hu-berlin.de/.
 
 ## Example login:
 Username: safasdfgwadgva3z5eh
