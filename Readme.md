@@ -6,7 +6,7 @@ QRNGHuBerlinTest is a project written in C# 4.8. The software is used to connect
 [![GitHub issues](https://img.shields.io/github/issues/SeppPenner/QRNGHuBerlinTest.svg)](https://github.com/SeppPenner/QRNGHuBerlinTest/issues)
 [![GitHub forks](https://img.shields.io/github/forks/SeppPenner/QRNGHuBerlinTest.svg)](https://github.com/SeppPenner/QRNGHuBerlinTest/network)
 [![GitHub stars](https://img.shields.io/github/stars/SeppPenner/QRNGHuBerlinTest.svg)](https://github.com/SeppPenner/QRNGHuBerlinTest/stargazers)
-[![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://raw.githubusercontent.com/SeppPenner/QRNGHuBerlinTest/master/License.txt)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://raw.githubusercontent.com/SeppPenner/QRNGHuBerlinTest/master/License.txt)
 [![Known Vulnerabilities](https://snyk.io/test/github/SeppPenner/QRNGHuBerlinTest/badge.svg)](https://snyk.io/test/github/SeppPenner/QRNGHuBerlinTest)
 
 ## Screenshots from the GUI
