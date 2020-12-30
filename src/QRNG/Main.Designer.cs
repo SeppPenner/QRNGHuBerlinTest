@@ -1,4 +1,4 @@
-﻿namespace QaRaNuGe
+﻿namespace QRNG
 {
     partial class Main
     {
@@ -6,9 +6,9 @@
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -59,7 +59,7 @@
             this.btnFloat.TabIndex = 6;
             this.btnFloat.Text = "Get Float";
             this.btnFloat.UseVisualStyleBackColor = true;
-            this.btnFloat.Click += new System.EventHandler(this.BtnFloat_Click);
+            this.btnFloat.Click += new System.EventHandler(this.ButtonFloatClick);
             // 
             // Memo
             // 
@@ -78,7 +78,7 @@
             this.btnInt.TabIndex = 2;
             this.btnInt.Text = "Get Integer";
             this.btnInt.UseVisualStyleBackColor = true;
-            this.btnInt.Click += new System.EventHandler(this.BtnInt_Click);
+            this.btnInt.Click += new System.EventHandler(this.ButtonIntegerClick);
             // 
             // edtNum
             // 
@@ -110,7 +110,7 @@
             this.btnTesting.TabIndex = 3;
             this.btnTesting.Text = "Test";
             this.btnTesting.UseVisualStyleBackColor = true;
-            this.btnTesting.Click += new System.EventHandler(this.BtnTesting_Click);
+            this.btnTesting.Click += new System.EventHandler(this.ButtonTestingClick);
             // 
             // grpConnect
             // 
@@ -186,7 +186,7 @@
             this.btnConnect.TabIndex = 2;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
-            this.btnConnect.Click += new System.EventHandler(this.BtnConnect_Click);
+            this.btnConnect.Click += new System.EventHandler(this.ButtonConnectClick);
             // 
             // Main
             // 

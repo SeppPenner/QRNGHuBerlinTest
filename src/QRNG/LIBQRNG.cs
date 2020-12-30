@@ -1,11 +1,11 @@
 ﻿// import external dll functions
 
-using System;
-using System.Text;
-using System.Runtime.InteropServices;
-
-namespace QaRaNuGe
+namespace QRNG
 {
+    using System;
+    using System.Runtime.InteropServices;
+    using System.Text;
+
     // ReSharper disable once InconsistentNaming
     public class QRNG
     {
@@ -39,8 +39,8 @@ namespace QaRaNuGe
         // ReSharper disable once InconsistentNaming
         public bool CheckDLL()
         {
-            QRNGDLLLoaded = true;
-            return QRNGDLLLoaded;
+            this.QRNGDLLLoaded = true;
+            return this.QRNGDLLLoaded;
         }
 
         //{+// All library functions (except disconnect()) return 0 (= QRNG_SUCCESS) if }

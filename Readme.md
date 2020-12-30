@@ -1,6 +1,6 @@
 # QRNGHuBerlinTest
 
-QRNGHuBerlinTest is a project written in C# 4.8. The software is used to connect to the HU Berlin quantum computer.
+QRNGHuBerlinTest is a project written in C# 5.0. The software is used to connect to the HU Berlin quantum computer.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/oqxpxjs9hp561wg8?svg=true)](https://ci.appveyor.com/project/SeppPenner/qrnghuberlintest)
 [![GitHub issues](https://img.shields.io/github/issues/SeppPenner/QRNGHuBerlinTest.svg)](https://github.com/SeppPenner/QRNGHuBerlinTest/issues)
@@ -27,6 +27,4 @@ Password: TcQgUrBj1BeF
 Change history
 --------------
 
-* **Version 1.0.1.0 (2019-10-27)** : Updated nuget packages, added GitVersionTask.
-* **Version 1.0.0.1 (2019-05-07)** : Updated .Net version to 4.8.
-* **Version 1.0.0.0 (2018-01-21)** : 1.0 release.
+See the [Changelog](https://github.com/SeppPenner/QRNGHuBerlinTest/blob/master/Changelog.md).
