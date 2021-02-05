@@ -15,7 +15,7 @@ QRNGHuBerlinTest is a project written in .Net 5.0. The software is used to conne
 ## Special thanks
 The QRNG code is mainly taken from https://qrng.physik.hu-berlin.de/.
 
-## Example login:
+## Example login
 Username: safasdfgwadgva3z5eh
 
 Email: safasdfgwadgva3z5eh@tempr.email
